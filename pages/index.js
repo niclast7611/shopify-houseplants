@@ -1,11 +1,12 @@
 import { getProductsInCollection } from "../lib/shopify"
+import ProductList from "../components/ProductList"
 
 export default function Home({ products }) {
 
   console.log(products)
   return (
     <div className='text-4xl'>
-      <h1>Hello World</h1>
+      <ProductList products={products} />
     </div>
   )
 }
