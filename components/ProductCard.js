@@ -3,12 +3,14 @@ import Image from 'next/image'
 import { formatter } from '../utils/helpers'
 
 const ProductCard = ({ product }) => {
+    // destructure from product object(shopify)
     const { handle, title } = product.node
 
     const { altText, originalSrc } = product.node.images.edges[0].node
 
     const price = product.node.priceRange.minVariantPrice.amount
     return (
+        // dynamic route to individual product pages 
         <Link href={`/products/${handle}`} >
             <a className='group'>
                 <div className='w-full bg-gray-200 rounded-3xl overflow-hidden'>

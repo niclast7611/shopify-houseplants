@@ -9,11 +9,16 @@ export default function ProductOptions({ name, values, selectedOptions, setOptio
             <div className='inline-flex items-center flex-wrap'>
                 {
                     values.map(value => {
+
+                        // creates a unique id
                         const id = `options${name}-${value}`
                         const checked = selectedOptions[name] === value
                         // console.log("selectedOptions", selectedOptions)
+
                         return (
+                            // creates the form content 
                             <label key={id} htmlFor={id}>
+                                {/* all the variant options match with the label */}
                                 <input
                                     className='sr-only'
                                     type='radio'
