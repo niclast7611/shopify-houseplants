@@ -31,6 +31,8 @@ export default function ShopProvider({ children }) {
 
     // adds new item to cart if theres nothing in cart 
     async function addToCart(newItem) {
+        setCartOpen(true)
+
         if (cart.length === 0) {
             setCart([newItem])
             // calls createCheckout query from shopify.js
@@ -64,6 +66,20 @@ export default function ShopProvider({ children }) {
         }
     }
 
+    async function removeCartItem(itemToRemove) {
+        // to remove items we use built in js filter method 
+        const updatedCart = cart.filter(item => item.id !== itemToRemove)
+        //sets updated cart to cart, localstorage, and checkout 
+        setCart(updatedCart)
+        const newCheckout = await updateCheckout(checkoutId, updatedCart)
+
+        localStorage.setItem('checkout_id', JSON.stringify([updatedCart, newCheckout]))
+        //if card is less then one the it closes automatically 
+        if (cart.length === 1) {
+            setCartOpen(false)
+        }
+    }
+
     return (
 
         // (google) Every Context object comes with a Provider React component that allows consuming components to subscribe to context changes(all children subscribe to context changes listed in the value object)
@@ -72,7 +88,8 @@ export default function ShopProvider({ children }) {
             cartOpen,
             setCartOpen,
             addToCart,
-            checkoutUrl
+            checkoutUrl,
+            removeCartItem
         }}>
             {children}
         </CartContext.Provider>
