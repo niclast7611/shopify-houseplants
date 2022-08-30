@@ -11,6 +11,24 @@ export default function ShopProvider({ children }) {
     const [checkoutId, setCheckoutId] = useState('')
     const [checkoutUrl, setCheckoutUrl] = useState('')
 
+    //first checks to see if local storage has any information in it when the page is loaded up 
+    useEffect(() => {
+        if (localStorage.checkout_id) {
+            const cartObject = JSON.parse(localStorage.checkout_id)
+            //if theres nothing in local storage then sets it to 0 
+            if (cartObject[0].id) {
+                setCart([cartObject[0]])
+                //if there is information in local storage sets the cart to whatever was added previously 
+            } else if (cartObject[0].length > 0) {
+                setCart(...[cartObject[0]])
+            }
+            //then sets the id and url to the second thing in the cart 
+            setCheckoutId(cartObject[1].id)
+            setCheckoutUrl(cartObject[1].webUrl)
+        }
+
+    }, [])
+
     // adds new item to cart if theres nothing in cart 
     async function addToCart(newItem) {
         if (cart.length === 0) {
@@ -22,6 +40,7 @@ export default function ShopProvider({ children }) {
             setCheckoutUrl(checkout.webUrl)
 
             // (google) localStorage is a web storage object that allows JavaScript sites and apps to keep key-value pairs in a web browser with no expiration date. This means the data survives page refreshes
+            //keeps cart from emptying when pages is reloaded or left and returned to 
             localStorage.setItem('checkout_id', JSON.stringify([newItem, checkout]))
 
         } else {
