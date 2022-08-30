@@ -2,6 +2,7 @@ import Link from "next/link"
 import { useContext } from "react"
 import { CartContext } from "../context/shopContext"
 
+// styled navbar imported into Layout.js
 export default function Nav() {
 
     const { cart, cartOpen, setCartOpen } = useContext(CartContext)
@@ -24,6 +25,7 @@ export default function Nav() {
                         </span>
                     </a>
                 </Link>
+                {/* displays cart quantity */}
                 <a className="text-md font-bold cursor-pointer">
                     Cart ({cartQuantity})
                 </a>
