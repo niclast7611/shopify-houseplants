@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { CartContext } from '../context/shopContext'
 import { formatter } from '../utils/helpers'
 import Link from 'next/link'
-import { castDraft } from 'immer'
 
 export default function MiniCart({ cart }) {
     const cancelButtonRef = useRef()
