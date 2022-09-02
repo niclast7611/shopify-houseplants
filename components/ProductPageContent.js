@@ -28,11 +28,11 @@ export default function ProductPageContent({ product }) {
         <div>
 
             <div className='flex flex-col justify-center items-center space-y-8 md:flex-row md:items-start md:space-y-0 md:space-x-4 lg:space-x-8 max-w-6xl w-11/12 mx-auto'>
-                <div className='w-full max-w-md border bg-white rounded-2xl overflow-hidden shadow-lg md:w-1/2'>
+                <div className='w-full max-w-md border rounded-2xl overflow-hidden shadow-lg md:w-1/2'>
                     <div className='relative h-96 w-full'>
                         {/* product show pages shows images for the selected product */}
                         <Swiper
-                            style={{ '--swiper-navigation-color': '#000', '--swiper-pagination-color': '#000' }}
+                            style={{ '--swiper-navigation-color': '#224229', '--swiper-pagination-color': '#224229' }}
                             navigation
                             pagination={{ clickable: true }}
                             className='h-96 rounded-2xl'
@@ -45,7 +45,7 @@ export default function ProductPageContent({ product }) {
                 {/* shows product form which has add to cart and diff variants */}
                 <ProductForm product={product} />
             </div>
-            <p className='pt-16 space-y-8 md:space-x-4 lg:space-x-8 max-w-3xl w-11/12 mx-auto'>{product.description}</p>
+            <p className='pt-16 space-y-8 md:space-x-4 lg:space-x-8 max-w-3xl w-11/12 mx-auto text-[#224229]'>{product.description}</p>
             <RecommendedList current={product.id} products={product.collections.edges[0].node.products.edges} />
         </div>
     )
