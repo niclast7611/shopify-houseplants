@@ -60,9 +60,9 @@ export default function ProductForm({ product }) {
     // console.log("default", defaultValues)
     // console.log("allVariantOptions", allVariantOptions)
     return (
-        <div className="rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3">
-            <h2 className="text-2xl font-bold">{product.title}</h2>
-            <span className="pb-3">{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span>
+        <div className="rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3 bg-[#fcf9f3]">
+            <h2 className="text-2xl font-bold text-[#224229]">{product.title}</h2>
+            <span className="pb-3 text-[#224229]" >{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span>
 
             {/* creates the two seperate forms containing the product options because of the map*/}
             {
@@ -80,7 +80,7 @@ export default function ProductForm({ product }) {
             <button
                 // adding the selected variant to the cart 
                 onClick={() => addToCart(selectedVariant)}
-                className="bg-black rounded-lg text-white px-2 py-3 hover:bg-gray-800 mt-3">
+                className="text-white bg-[#64aa85] rounded-lg px-2 py-3 hover:text-[#fcf9f3] hover:bg-[#224229] mt-3">
                 Add To Cart
             </button>
         </div>

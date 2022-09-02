@@ -28,9 +28,20 @@ export default function ProductOptions({ name, values, selectedOptions, setOptio
                                     checked={checked}
                                     onChange={() => setOptions(name, value)}
                                 />
-                                <div className={`p-2 mt-3 text-lg rounded-full block cursor-pointer mr-3 ${checked ? "text-white bg-gray-900" : "text-gray-900 bg-gray-200"}`
+                                {/* <div className={`p-2 mt-3 text-lg rounded-full block cursor-pointer mr-3 ${checked ? "text-[#fcf9f3] bg-[#224229]" : "text-white bg-[#64aa85]"}`
+                                }> */}
+                                <div className={`p-2 mt-3 text-lg rounded-full block cursor-pointer mr-3 text-[#fcf9f3]
+                                ${value === 'Stone' ? 'bg-gray-400'
+                                        : value === 'Clay' ? 'bg-stone-500'
+                                            : value === 'Charcoal' ? 'bg-black'
+                                                : value === 'Slate' ? 'bg-slate-400'
+                                                    : value === 'Basalt' ? 'bg-zinc-700'
+                                                        : value === 'Terracotta' ? 'bg-yellow-800'
+                                                            : 'bg-[#224229]'
+                                    } 
+                                ${checked ? "border-[#64aa85] border-4" : null}`
                                 }>
-                                    <span className='px-2'>{value}</span>
+                                    <span className='px-2 '>{value}</span>
                                 </div>
                             </label>
                         )

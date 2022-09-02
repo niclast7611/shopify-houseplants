@@ -5,7 +5,7 @@ export default function Home({ products }) {
 
   // console.log(products)
   return (
-    <div className=''>
+    <div className='bg-[#fcf9f3]'>
       <Hero />
       <ProductList products={products} />
     </div>
