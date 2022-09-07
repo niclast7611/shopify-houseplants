@@ -1,6 +1,6 @@
 import ProductPageContent from "../../components/ProductPageContent"
 import { getAllProducts, getProduct } from "../../lib/shopify"
-
+//deleted products from shopify
 export default function ProductPage({ product }) {
     return (
         <div className="min-h-screen py-12 sm:pt-20 bg-[#fcf9f3]">
