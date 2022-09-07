@@ -6,19 +6,24 @@ import Image from 'next/image'
 import { CartContext } from '../context/shopContext'
 import { formatter } from '../utils/helpers'
 import Link from 'next/link'
-import QuantityCounter from './QuantityCounter'
 
 export default function MiniCart({ cart }) {
     const cancelButtonRef = useRef()
-
+    const [number, setNumber] = useState(1)
     const { cartOpen, setCartOpen, checkoutUrl, removeCartItem } = useContext(CartContext)
 
     let cartTotal = 0
     //maps over everything in cart and adds them up
     //if there are multiple quantities then it multiples them
+
     cart.map(item => {
-        cartTotal += item?.variantPrice * item?.variantQuantity
+        const variantPrice = Number(item?.variantPrice)
+
+        cartTotal += variantPrice * number
+
+        console.log('number', number)
     })
+
     return (
         <Transition.Root show={cartOpen} as={Fragment}>
             <Dialog
@@ -101,7 +106,28 @@ export default function MiniCart({ cart }) {
                                                                             </div>
                                                                             <div className="flex flex-1 items-end justify-between text-sm">
                                                                                 <div className="text-[#fcf9f3]">
-                                                                                    <QuantityCounter /></div>
+                                                                                    <div className="flex flex-wrap flex-col max-h-full content-center">
+                                                                                        <div className="flex items-center justify-center">
+                                                                                            <button
+                                                                                                className="px-2 w-8 h-8 appearance-none bg-none text-xl outline-none border-2 border-solid border-transparent text-[#224229] pb-4 cursor-pointer bg-[#fcf9f3] rounded-full transition-all hover:border-2 hover:border-solid  hover:border-[#224229]/[0.5] focus:outline-2"
+                                                                                                aria-label="Decrement value"
+                                                                                                onClick={() => number != 1 ? setNumber(number - 1) : null}
+                                                                                            >
+                                                                                                -
+                                                                                            </button>
+                                                                                            <span className="text-3xl pl-5 pr-5  mt-1 text-[#fcf9f3]">
+                                                                                                {number}
+                                                                                            </span>
+                                                                                            <button
+                                                                                                className="px-2 w-8 h-8 appearance-none bg-none text-xl outline-none border-2 border-solid border-transparent text-[#224229] pb-4 cursor-pointer bg-[#fcf9f3] rounded-full transition-all hover:border-2 hover:border-solid  hover:border-[#224229]/[0.5] focus:outline-2"
+                                                                                                aria-label="Increment value"
+                                                                                                onClick={() => setNumber(number + 1)}
+                                                                                            >
+                                                                                                +
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
 
                                                                                 <div className="flex">
                                                                                     <button
