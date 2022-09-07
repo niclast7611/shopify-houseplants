@@ -1,34 +1,26 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function Counter() {
+const QuantityCounter = () => {
 
-    const { quanity, setQuantity } = useState(1)
-
-    const decrement = (value) => {
-        return value -= 1
-    }
-
-    const increment = (value) => {
-        return value += 1
-    }
+    const [number, setNumber] = useState(1)
 
     return (
-        <div className="flex flex-wrap flex-col w-1/2 max-h-full bg-white content-center md:w-screen">
+        <div className="flex flex-wrap flex-col max-h-full content-center">
             <div className="flex items-center justify-center">
                 <button
-                    className="px-3 w-12 h-12 appearance-none bg-none text-4xl  outline-none border-2 border-solid border-transparent text-purple-600 pb-4 cursor-pointer bg-purple-600/[0.1] rounded-sm transition-all hover:border-2 hover:border-solid  hover:border-purple-600/[0.4] focus:outline-2"
+                    className="px-2 w-8 h-8 appearance-none bg-none text-xl outline-none border-2 border-solid border-transparent text-[#224229] pb-4 cursor-pointer bg-[#fcf9f3] rounded-full transition-all hover:border-2 hover:border-solid  hover:border-[#224229]/[0.5] focus:outline-2"
                     aria-label="Decrement value"
-                    onClick={() => decrement(quanity)}
+                    onClick={() => number != 1 ? setNumber(number - 1) : null}
                 >
                     -
                 </button>
-                <span className="text-7xl pl-10 pr-10  mt-2 text-purple-600">
-                    {quanity}
+                <span className="text-3xl pl-5 pr-5  mt-1 text-[#fcf9f3]">
+                    {number}
                 </span>
                 <button
-                    className="pl-3 pr-3 w-12 h-12 appearance-none bg-none text-4xl  outline-none border-2 border-solid border-transparent text-purple-600 pb-4 cursor-pointer bg-purple-600/[0.1] rounded-sm transition-all hover:border-2 hover:border-solid  hover:border-purple-600/[0.4] focus:outline-2"
+                    className="px-2 w-8 h-8 appearance-none bg-none text-xl outline-none border-2 border-solid border-transparent text-[#224229] pb-4 cursor-pointer bg-[#fcf9f3] rounded-full transition-all hover:border-2 hover:border-solid  hover:border-[#224229]/[0.5] focus:outline-2"
                     aria-label="Increment value"
-                    onClick={() => increment(quanity)}
+                    onClick={() => setNumber(number + 1)}
                 >
                     +
                 </button>
@@ -37,3 +29,4 @@ export default function Counter() {
 
     );
 }
+export default QuantityCounter

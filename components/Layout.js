@@ -1,7 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
 import Footer from './Footer'
-import QuantityCounter from './QuantityCounter'
 
 export default function Layout({ children }) {
     return (
@@ -20,7 +19,6 @@ export default function Layout({ children }) {
 
             {/* same as nav */}
             <Footer />
-            <QuantityCounter />
         </div>
     )
 }

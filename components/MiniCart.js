@@ -1,11 +1,12 @@
 // This whole feature was imported from tailwind components 
-
+import { useState } from 'react'
 import { Fragment, useContext, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { CartContext } from '../context/shopContext'
 import { formatter } from '../utils/helpers'
 import Link from 'next/link'
+import QuantityCounter from './QuantityCounter'
 
 export default function MiniCart({ cart }) {
     const cancelButtonRef = useRef()
@@ -13,13 +14,11 @@ export default function MiniCart({ cart }) {
     const { cartOpen, setCartOpen, checkoutUrl, removeCartItem } = useContext(CartContext)
 
     let cartTotal = 0
-
-    //maps over evrerything in cart and adds them up
+    //maps over everything in cart and adds them up
     //if there are multiple quantities then it multiples them
     cart.map(item => {
         cartTotal += item?.variantPrice * item?.variantQuantity
     })
-
     return (
         <Transition.Root show={cartOpen} as={Fragment}>
             <Dialog
@@ -101,7 +100,8 @@ export default function MiniCart({ cart }) {
                                                                                 <p className="mt-1 text-sm text-[#fcf9f3]">{product.variantTitle}</p>
                                                                             </div>
                                                                             <div className="flex flex-1 items-end justify-between text-sm">
-                                                                                <p className="text-[#fcf9f3]">Qty {product.variantQuantity}</p>
+                                                                                <div className="text-[#fcf9f3]">
+                                                                                    <QuantityCounter /></div>
 
                                                                                 <div className="flex">
                                                                                     <button
