@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ProductOptions({ name, values, selectedOptions, setOptions }) {
-    // console.log("values", values)
+    // console.log("values", selectedOptions)
     // console.log("name", name)
     return (
         <fieldset className='mt-3'>
