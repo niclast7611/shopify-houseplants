@@ -5,7 +5,7 @@ export default function Hero() {
         <div className="py-48 mx-auto max-w-7xl px-4 sm:pt-24 md:pt-72 text-center">
             <h1 className="font-extrabold text-[#224229]">
                 <p className="text-[#224229] bg-clip-text text-4xl sm;text-6xl md:text-7xl mb-5">UrbanUI🌿</p>
-                <p className="text-xl sm:text-3xl md:text-4xl">Find a Perfect Home for those Perfect Plants at</p>
+                <p className="text-xl sm:text-3xl md:text-4xl">Find a Perfect Home for those Perfect Plants</p>
             </h1>
 
             <div className="mt-5 max-w-md mx-auto flex justify-center items-center md:mt-8">
