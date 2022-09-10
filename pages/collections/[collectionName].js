@@ -1,12 +1,13 @@
-import {  getProduct, getAllCollections } from "../../lib/shopify"
+import {  getProductsInCollection, getAllCollections } from "../../lib/shopify"
+import CollectionsPage from "../../components/CollectionsPage";
 
-export default function CollectionPage() {
+export default function CollectionPage({ products }) {
     // const { collectionName } = 'small-plants'
     // const smProducts = products.filter(product => product.collection === collectionName)
     // const products = allSmallPlants
     return (
-        <div>
-            hello world 
+        <div className="min-h-screen py-12 sm:pt-20 bg-[#fcf9f3]">
+            <CollectionsPage products={products} />
         </div>
     );
 }
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
         }
     })
 
-    console.log(paths)
+    // console.log(paths)
     return {
         paths,
         fallback: false
@@ -32,13 +33,10 @@ export async function getStaticPaths() {
 }
 
   // This function will run only at build time.
-export async function getStaticProps({ params }) {
-    const product = await getProduct(params.product)
-
+  export async function getStaticProps() {
+    const products = await getProductsInCollection()
+  
     return {
-        props: {
-            product
-        }
+      props: { products },
     }
-
-}
+  }
