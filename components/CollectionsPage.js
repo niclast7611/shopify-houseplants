@@ -3,12 +3,12 @@ import ProductCard from './ProductCard'
 
 export default function CollectionsPage({ products }) {
 
-    // const collectionSpecificProduct = products.filter(item => {
-    //     // products.filter(product => product.collection === collectionName)
+    const collectionSpecificProduct = products?.filter(item => {
+       item.node.collections.edges[1].node.title === 'Small Plants'
        
-    // })
+    })
 
-    console.log(products)
+    console.log(products[0].node.collections.edges[1].node.title)
 
     return (
         <div className="">
