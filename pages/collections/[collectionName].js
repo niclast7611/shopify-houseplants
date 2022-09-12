@@ -23,23 +23,22 @@ export async function getStaticPaths() {
         
         //needs to be same name as file 
         const collectionName = String(item.node.handle)
-        
+      
         return {
             params: { collectionName }
         }
     })
-
-    // console.log(paths)
+    
+    
     return {
         paths,
         fallback: false
     }
 }
-
-  // This function will run only at build time.
-  export async function getStaticProps() {
-    const products = await getProductsInCollection()
-  
+// This function will run only at build time.
+export async function getStaticProps({params}) {
+    const products = await getProductsInCollection(params.collectionName)
+    console.log(products)
     return {
       props: { products },
     }

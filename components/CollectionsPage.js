@@ -3,24 +3,25 @@ import ProductCard from './ProductCard'
 
 export default function CollectionsPage({ products }) {
 
-    const collectionSpecificProduct = products.filter(item => (
-            item.node.collections.edges[1]?.node.handle === 'small-plants'
-        ))
+    // const collectionSpecificProduct = products.filter(item => (
+    //         item.node.collections.edges[1]?.node.handle === 'small-plants'
+    //     ))
 
-    console.log('products', products)
-    console.log('handle',products[0].node.collections.edges[0]?.node.handle)
-    console.log('collectionSpecificProduct', collectionSpecificProduct)
+    // console.log('products', products)
+    // console.log('handle',products[0].node.collections.edges[0]?.node.handle)
+    // console.log('collectionSpecificProduct', collectionSpecificProduct)
+
 
     return (
         <div className="">
             <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-                <h2 className="text-2xl font-extrabold text-[#224229] mb-6 w-full flex justify-center">
-                    {products[0].node.collections.edges[1]?.node.title.toUpperCase()}
+                <h2 className="text-3xl font-extrabold text-[#224229] mb-6 w-full ">
+                    {products[0]?.node.collections.edges[1]?.node.title.toUpperCase()}
                 </h2>
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     {/* maps over the all the products in the store and passes them to the styled product cards to be displayed here */}
                     {
-                        collectionSpecificProduct.map(product => (
+                        products.map(product => (
                             <ProductCard product={product} key={product.node.id} />
                         ))
                     }
