@@ -35,7 +35,6 @@ export default function ProductForm({ product }) {
     product.options.map(item => {
         defaultValues[item.name] = item.values[0]
     })
-
     const [selectedVariant, setSelectedVariant] = useState(allVariantOptions[0])
     const [selectedOptions, setSelectedOptions] = useState(defaultValues)
 
@@ -44,7 +43,6 @@ export default function ProductForm({ product }) {
         setSelectedOptions(prevState => {
             return { ...prevState, [name]: value }
         })
-
         const selection = {
             ...selectedOptions,
             [name]: value
@@ -62,7 +60,7 @@ export default function ProductForm({ product }) {
     return (
         <div className="rounded-2xl p-4 shadow-lg flex flex-col w-full md:w-1/3 bg-[#fcf9f3]">
             <h2 className="text-2xl font-bold text-[#224229]">{product.title}</h2>
-            <span className="pb-3 text-[#224229]" >{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span>
+            <span className="pb-3 text-[#224229]" >{formatter.format(selectedVariant.variantPrice)}</span>
 
             {/* creates the two seperate forms containing the product options because of the map*/}
             {
