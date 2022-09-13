@@ -9,6 +9,8 @@ export default function Hero({collectionNames}) {
                 <p className="text-[#224229] bg-clip-text text-4xl sm;text-6xl md:text-7xl mb-5">UrbanUI🌿</p>
                 <p className="text-xl sm:text-3xl md:text-4xl">Find a Perfect Home for those Perfect Plants at</p>
                 <p className="text-xl sm:text-3xl md:text-4xl pt-4">Shop Products Below</p>
+
+    
             </h1>
 
             <div className="mt-5 max-w-content mx-auto flex justify-center items-center md:mt-8">
