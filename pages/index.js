@@ -1,21 +1,21 @@
-import { getProductsInCollection } from "../lib/shopify"
+import { getAllCollections, getProductsForHomePage } from "../lib/shopify"
 import ProductList from "../components/ProductList"
 import Hero from "../components/Hero"
-export default function Home({ products }) {
+export default function Home({ homePageProducts, collectionNames }) {
 
-  // console.log(products)
+  // console.log(homePageProducts.length)
   return (
     <div className='bg-[#fcf9f3]'>
-      <Hero />
-      <ProductList products={products} />
+      <Hero collectionNames={collectionNames}/>
+      <ProductList homePageProducts={homePageProducts} />
     </div>
   )
 }
 
 export async function getStaticProps() {
-  const products = await getProductsInCollection()
-
+  const homePageProducts = await getProductsForHomePage()
+  const collectionNames = await getAllCollections()
   return {
-    props: { products },
+    props: { homePageProducts, collectionNames },
   }
 }
