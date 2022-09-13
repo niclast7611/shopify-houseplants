@@ -35,7 +35,7 @@ export default function ProductOptions({ name, values, selectedOptions, setOptio
                                         : value === 'Clay' ? 'bg-stone-500'
                                             : value === 'Charcoal' ? 'bg-black'
                                                 : value === 'Slate' ? 'bg-slate-400'
-                                                    : value === 'Basalt' ? 'bg-zinc-700'
+                                                    : value === 'Basalt' ? 'bg-zinc-600'
                                                         : value === 'Terracotta' ? 'bg-yellow-800'
                                                             : 'bg-[#224229]'
                                     } 
