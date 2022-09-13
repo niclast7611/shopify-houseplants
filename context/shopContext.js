@@ -10,7 +10,6 @@ export default function ShopProvider({ children }) {
     const [cartOpen, setCartOpen] = useState(false)
     const [checkoutId, setCheckoutId] = useState('')
     const [checkoutUrl, setCheckoutUrl] = useState('')
-
     //first checks to see if local storage has any information in it when the page is loaded up 
     useEffect(() => {
         if (localStorage.checkout_id) {
@@ -78,6 +77,48 @@ export default function ShopProvider({ children }) {
         if (cart.length === 1) {
             setCartOpen(false)
         }
+      
+    }
+
+
+    async function removeCartItemQuantity(itemQuantityToRemove) {
+       //creating copy of cart to mdify and set
+      const newCart = cart.map(item => item);
+      //finding the index of product to be evaluating against
+      const index = newCart.findIndex(product => product.id === itemQuantityToRemove);
+      //if variantQuatity is greater then 1 minus (1)
+      //oterwise remove item from array
+      if (newCart[index].variantQuantity > 1) {
+        newCart[index].variantQuantity =  newCart[index].variantQuantity - 1;
+
+        setCart(newCart);
+        const newCheckout = await updateCheckout(checkoutId, newCart)
+        localStorage.setItem('checkout_id', JSON.stringify([newCart, newCheckout]))
+
+      } else {
+        removeCartItem(itemQuantityToRemove);
+      }
+
+    }
+
+
+
+
+    async function addCartItemQuantity(itemQuantityToAdd) {
+         //creating copy of cart to mdify and set
+         const newCart = cart.map(item => item);
+         //finding the index of product to be evaluating against
+         const index = newCart.findIndex(product => product.id === itemQuantityToAdd);
+   
+         //if variantQuatity is greater then 1 minus (1)
+         //oterwise remove item from array
+   
+           newCart[index].variantQuantity =  newCart[index].variantQuantity + 1;
+           setCart(newCart);
+            const newCheckout = await updateCheckout(checkoutId, newCart)
+            localStorage.setItem('checkout_id', JSON.stringify([newCart, newCheckout]))
+        
+       
     }
 
     return (
@@ -89,7 +130,9 @@ export default function ShopProvider({ children }) {
             setCartOpen,
             addToCart,
             checkoutUrl,
-            removeCartItem
+            removeCartItem,
+            addCartItemQuantity,
+            removeCartItemQuantity
         }}>
             {children}
         </CartContext.Provider>
