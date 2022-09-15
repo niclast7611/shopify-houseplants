@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export default function MiniCart({ cart }) {
     const cancelButtonRef = useRef()
-    const { cartOpen, setCartOpen, checkoutUrl, removeCartItem, addCartItemQuantity, removeCartItemQuantity } = useContext(CartContext)
+    const { cartOpen, setCartOpen, checkoutUrl, removeCartItem, addCartItemQuantity, removeCartItemQuantity, clearCartWhenComplete } = useContext(CartContext)
 
     let cartTotal = 0
     //maps over everything in cart and adds them up
@@ -157,6 +157,7 @@ export default function MiniCart({ cart }) {
                                                     <p className="mt-0.5 text-sm text-[#fcf9f3]">Shipping and taxes calculated at checkout.</p>
                                                     <div className="mt-6">
                                                         <a
+                                                        onClick={() => clearCartWhenComplete()}
                                                             href={checkoutUrl}
                                                             className="flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-[#224229] shadow-sm bg-white hover:bg-[#fcf9f3]"
                                                         >

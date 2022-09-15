@@ -36,6 +36,7 @@ export default function ShopProvider({ children }) {
             setCart([newItem])
             // calls createCheckout query from shopify.js
             const checkout = await createCheckout(newItem.id, newItem.variantQuantity)
+            
             // creates checkout id and url 
             setCheckoutId(checkout.id)
             setCheckoutUrl(checkout.webUrl)
@@ -44,7 +45,8 @@ export default function ShopProvider({ children }) {
             //keeps cart from emptying when pages is reloaded or left and returned to 
             localStorage.setItem('checkout_id', JSON.stringify([newItem, checkout]))
 
-        } else {
+        }
+        else {
             // spread the cart so we can add new items to the end 
             let newCart = [...cart]
             // maps over cart if theres already an item with the same id in cart increase quantity
@@ -121,6 +123,10 @@ export default function ShopProvider({ children }) {
        
     }
 
+    async function clearCartWhenComplete(){
+        localStorage.clear()
+    }
+
     return (
 
         // (google) Every Context object comes with a Provider React component that allows consuming components to subscribe to context changes(all children subscribe to context changes listed in the value object)
@@ -132,7 +138,8 @@ export default function ShopProvider({ children }) {
             checkoutUrl,
             removeCartItem,
             addCartItemQuantity,
-            removeCartItemQuantity
+            removeCartItemQuantity,
+            clearCartWhenComplete
         }}>
             {children}
         </CartContext.Provider>
@@ -142,3 +149,5 @@ export default function ShopProvider({ children }) {
 // (google) A React component that subscribes to context changes. Using this component lets you subscribe to a context within a function component.
 const ShopConsumer = CartContext.Consumer
 export { ShopConsumer, CartContext }
+
+
