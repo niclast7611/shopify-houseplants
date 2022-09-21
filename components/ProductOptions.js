@@ -34,12 +34,13 @@ export default function ProductOptions({ name, values, selectedOptions, setOptio
                                 ${value === 'Stone' ? 'bg-gray-400'
                                         : value === 'Clay' ? 'bg-stone-500'
                                             : value === 'Charcoal' ? 'bg-black'
-                                                : value === 'Slate' ? 'bg-slate-400'
+                                                : value === 'Slate' ? 'bg-slate-500'
                                                     : value === 'Basalt' ? 'bg-zinc-600'
                                                         : value === 'Terracotta' ? 'bg-yellow-800'
+                                                            : value === 'Indigo' ? 'bg-sky-900'
                                                             : 'bg-[#224229]'
                                     } 
-                                ${checked ? "border-[#64aa85] border-4" : null}`
+                                ${checked ? "border-[#64aa99] border-2" : null}`
                                 }>
                                     <span className='px-2 '>{value}</span>
                                 </div>
