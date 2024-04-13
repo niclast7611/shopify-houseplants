@@ -12,10 +12,10 @@ const ChatbotScript = ({ chatbotId, domain, env, islandType }) => {
             var script = document.createElement('script');
             script.async = true;
             script.src = 'https://ripe.chat/islands/client-chat-button.island.umd.js';
-            script.setAttribute('chatbotId', ${chatbotId});
-            script.setAttribute('domain', ${domain});
-            script.setAttribute('env', ${env});
-            script.setAttribute('islandType', ${islandType});
+            script.setAttribute('chatbotId', "${chatbotId}");
+            script.setAttribute('domain', "${domain}");
+            script.setAttribute('env', "${env}");
+            script.setAttribute('islandType', "${islandType}");
             document.head.appendChild(script);
           })();
       `}
