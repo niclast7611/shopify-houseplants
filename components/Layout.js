@@ -1,24 +1,20 @@
-import React from 'react'
-import Nav from './Nav'
-import Footer from './Footer'
+import React from "react";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import ChatbotScript from "./ChatScript";
 
 export default function Layout({ children }) {
-    return (
-        // styled div which is whole screen 
-        <div className='flex flex-col justify-between min-h-screen'>
-            {/* nav component is wrapped around everything else so it is always displayed */}
-            <Nav />
-
-
-            <main>
-                {/* all main content  */}
-                {children}
-            </main>
-
-
-
-            {/* same as nav */}
-            <Footer />
-        </div>
-    )
+  return (
+    <div className="flex flex-col justify-between min-h-screen">
+      <Nav />
+      <main>{children}</main>
+      <Footer />
+      <ChatbotScript
+        chatbotId="112"
+        domain="https://shopify-houseplants.vercel.app/"
+        env="dev"
+        islandType="button"
+      />
+    </div>
+  );
 }
