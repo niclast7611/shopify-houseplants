@@ -10,7 +10,7 @@ export default function Layout({ children }) {
       <main>{children}</main>
       <Footer />
       <ChatbotScript
-        chatbotId="146"
+        chatbotId="209"
         domain="https://shopify-houseplants.vercel.app/"
         env="dev"
         islandType="button"
